@@ -68,10 +68,14 @@ class AuthController extends Controller
             'ket' => $validatedData['ket'],
         ]);
 
+        $aspirasi = Aspirasi::create([
+            'id_inputAspirasi' => $inputAspirasi->id,
+        ]);
 
-
-        $aspirasi = new Aspirasi();
-        $inputAspirasi->aspirasi()->save($aspirasi);
+        // entah kenapa gak work
+        // $aspirasi = new Aspirasi();
+        // // dd($aspirasi);
+        // $inputAspirasi->aspirasi()->save($aspirasi);
 
 
         return redirect()->back()->with('success', 'Laporan aspirasi berhasil disimpan.');

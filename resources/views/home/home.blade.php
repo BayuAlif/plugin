@@ -50,7 +50,7 @@
         <div class="d-flex justify-content-center mb-5">
             <h1 class="">FORM PENGISIAN PENGADUAN</h1>
         </div>
-        <form class="row g-3" id="form" method="POST" action="{{route ('SendForm')}}"
+        <form class="row g-3" id="form" method="POST" action="{{ route('SendForm') }}"
             enctype="multipart/form-data">
             @csrf
             <div class="col-md-6">
@@ -62,9 +62,10 @@
             </div>
             <div class="col-md-6">
                 <label for="inputSubject2" class="form-label">Kategori</label>
-                <select class="form-select" aria-label="Default select example" name="id_kategori" id="inputSubject2" required>
+                <select class="form-select" aria-label="Default select example" name="id_kategori" id="inputSubject2"
+                    required>
                     <option disabled selected>Pilih Kategori</option>
-                    @foreach($kategori as $kat)
+                    @foreach ($kategori as $kat)
                         <option value="{{ $kat->id }}">{{ $kat->ket_kategori }}</option>
                     @endforeach
                 </select>
@@ -108,9 +109,21 @@
             </div>
         </form>
     </div>
-   
-    
 
+
+    {{-- Sweet Alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
+
+@if (Session::has('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: '{{ Session::get('success') }}',
+            confirmButtonText: 'OK!'
+        })
+    </script>
+@endif
 
 </html>

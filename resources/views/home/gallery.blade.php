@@ -72,13 +72,13 @@
                     <td>{{ $item->nis ? $item->siswa->nis : '' }}</td>
                     <td>{{ $item->kategori ? $item->kategori->ket_kategori : '' }}</td>
                     <td>
-                        @if($item->inputAspirasi && $item->foto)
-                            <img src="{{ asset('storage/img/'.$item->inputAspirasi->foto) }}" alt="Foto" style="max-width: 100px;">
+                        @if($item->foto)
+                            <img src="{{ asset('storage/img/'.$item->foto) }}" alt="Foto" style="max-width: 100px;">
                         @else
                             <span>No Photo</span>
                         @endif
                     </td>
-                    <td>{{ $item->inputAspirasi ? $item->inputAspirasi->ket : '' }}</td>
+                    <td>{{ $item->ket }}</td>
 
                     <td>{{ $item->aspirasi ? $item->aspirasi->status : '' }}</td>
                 </tr>

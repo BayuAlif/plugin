@@ -18,19 +18,18 @@ class InputAspirasi extends Model
     ];
     
 
-    public function kategori()
+    public function aspirasi()
     {
-        return $this->belongsTo(Kategori::class, 'id_kategori');
+        return $this->hasOne(Aspirasi::class, 'id_inputAspirasi', 'id_pelaporan');
     }
     
-
     public function siswa()
     {
         return $this->belongsTo(Siswa::class, 'nis', 'nis');
     }
-
-    public function aspirasi()
+    
+    public function kategori()
     {
-        return $this->hasOne(Aspirasi::class, 'id_inputAspirasi', 'id_pelaporan');
+        return $this->belongsTo(Kategori::class, 'id_kategori');
     }
 }
