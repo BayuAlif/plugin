@@ -85,7 +85,7 @@
                 @endforeach
             </tbody>
             
-        </table>
+        </table>    
     </div>
     </table>
     <div>

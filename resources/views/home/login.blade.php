@@ -15,34 +15,44 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
 
-    <div class="p-5">
-        <h1 class="d-felx justify-content-center text-center fs-2">LOGIN PENGURUS PENGADUAN</h1>
-        @if ($errors->any())
-            <div class=" alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-    <form class="p-5" method="POST" action="{{ Route('sendLogin') }}">
-        @csrf
-        <div class="mb-3">
-            <label for="exampleInputUsername1" class="form-label">Username</label>
-            <input type="text" class="form-control" id="exampleInputusername1" name="username">
-
+    <div class="container mt-5 d-flex flex-column justify-content-center">
+        <div class="card m-5 bg-secondary-subtle shadow">
+            <div class="card-header bg-body-secondary p-3">
+                <h1 class="text-center fs-2">LOGIN PENGURUS PENGADUAN</h1>
+            </div>
+            <div class="card-body bg-body-tertiary ">
+                <form class="" method="POST" action="{{ Route('sendLogin') }}">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="exampleInputUsername1" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="exampleInputusername1" name="username">
+        
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                    </div>
+        
+                    <button type="submit" class="w-100 btn btn-primary">Submit</button>
+        
+                </form>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-
-    </form>
     </div>
 
+    {{-- Sweet Alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+    @if (Session::has('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Kesalahan',
+                text: '{{ Session::get('error') }}',
+                confirmButtonText: '...Ok'
+            })
+        </script>
+    @endif
 
 </body>
 

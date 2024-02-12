@@ -33,10 +33,12 @@ class AuthController extends Controller
 
         if (auth()->guard('web')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/admin');
+            return redirect()->intended('/admin')->with([
+                'success' => 'Login Berhasil',
+            ]);
         } else {
-            return back()->withErrors([
-                'message' => 'Username or password is incorrect.',
+            return back()->with([
+                'error' => 'Username atau password salah.',
             ]);
         }
     }
